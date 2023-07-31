@@ -1,6 +1,6 @@
 node_modules/
 build/
-server.crt
-server.csr
-server.key
+*.crt
+*.csr
+*.key
 .DS_Store

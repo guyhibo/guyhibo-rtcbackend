@@ -2,12 +2,12 @@ const fs = require("fs");
 const app = require("express")();
 
 option = {
-	key: fs.readFileSync('./server.key'),
-	cert: fs.readFileSync('./server.crt'),
-	ca: fs.readFileSync('./server.csr')
+	key: fs.readFileSync('./private.key'),
+	cert: fs.readFileSync('./certificate.crt'),
+	ca: fs.readFileSync('./ca_bundle.crt')
 };
 
-const server = require("https").createServer(option, app);
+const server = require("http").createServer(app);
 const cors = require("cors");
 // const https = require('https');
 
@@ -20,7 +20,7 @@ const io = require("socket.io")(server, {
 
 app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8900;
 
 app.get('/', (req, res) => {
 	res.send('Running');
